@@ -1,0 +1,81 @@
+# GitHub Secrets Configuration
+
+Use these exact values when configuring GitHub secrets:
+
+## Required Secrets
+
+### 1. KEYSTORE_BASE64
+```
+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
+```
+
+### 2. KEYSTORE_PASSWORD
+```
+testpass
+```
+
+### 3. KEY_ALIAS  
+```
+testkey
+```
+
+### 4. KEY_PASSWORD
+```
+testpass
+```
+
+## How to Add These Secrets:
+
+1. Go to your GitHub repository
+2. Click **Settings** → **Secrets and variables** → **Actions**
+3. Click **New repository secret** for each of the four secrets above
+4. Copy the exact values (including the long base64 string for KEYSTORE_BASE64)
+
+## Notes:
+- These are test values only - use real credentials for production
+- The keystore was generated with 10,000 day validity
+- All passwords are set to "testpass" for simplicity
