@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<incidents format="6" by="lint 8.2.2" type="incidents">
+
+    <incident
+        id="HardcodedText"
+        severity="warning"
+        message="Hardcoded string &quot;Initializing...&quot;, should use `@string` resource">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*resDir*0}/layout/activity_main.xml"
+            line="23"
+            column="9"
+            startOffset="905"
+            endLine="23"
+            endColumn="39"
+            endOffset="935"/>
+    </incident>
+
+    <incident
+        id="UnsafeOptInUsageError"
+        severity="error"
+        message="This declaration is opt-in and its usage should be marked with `@androidx.camera.core.ExperimentalGetImage` or `@OptIn(markerClass = androidx.camera.core.ExperimentalGetImage.class)`">
+        <fix-alternatives>
+            <fix-replace
+                description="Add &apos;@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class)&apos; annotation to &apos;processImageProxy&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.annotation.OptIn(androidx.camera.core.ExperimentalGetImage::class) "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+                    startOffset="2032"
+                    endOffset="2039"/>
+            </fix-replace>
+            <fix-replace
+                description="Add &apos;@androidx.camera.core.ExperimentalGetImage&apos; annotation to &apos;processImageProxy&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.camera.core.ExperimentalGetImage "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+                    startOffset="2032"
+                    endOffset="2039"/>
+            </fix-replace>
+            <fix-replace
+                description="Add &apos;@androidx.camera.core.ExperimentalGetImage&apos; annotation to containing class &apos;MainActivity&apos;"
+                oldString="_lint_insert_begin_"
+                replacement="@androidx.camera.core.ExperimentalGetImage "
+                shortenNames="true">
+                <range
+                    file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+                    startOffset="0"
+                    endOffset="0"/>
+            </fix-replace>
+        </fix-alternatives>
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+            line="54"
+            column="32"
+            startOffset="2119"
+            endLine="54"
+            endColumn="37"
+            endOffset="2124"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="Do not concatenate text displayed with `setText`. Use resource string with placeholders.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+            line="65"
+            column="34"
+            startOffset="2665"
+            endLine="65"
+            endColumn="62"
+            endOffset="2693"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+            line="65"
+            column="35"
+            startOffset="2666"
+            endLine="65"
+            endColumn="45"
+            endOffset="2676"/>
+    </incident>
+
+    <incident
+        id="SetTextI18n"
+        severity="warning"
+        message="String literal in `setText` can not be translated. Use Android resources instead.">
+        <location
+            file="${:app*debug*MAIN*sourceProvider*0*javaDir*0}/com/example/handwrittenocrsumcam/MainActivity.kt"
+            line="65"
+            column="52"
+            startOffset="2683"
+            endLine="65"
+            endColumn="57"
+            endOffset="2688"/>
+    </incident>
+
+</incidents>
