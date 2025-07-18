@@ -41,7 +41,6 @@ com.example.handwrittenocrsumcam.app-core-runtime-2.2.0-39 /home/ubuntu/.gradle/
 com.example.handwrittenocrsumcam.app-resValues-40 /workspace/app/build/generated/res/resValues/release
 com.example.handwrittenocrsumcam.app-packageReleaseResources-41 /workspace/app/build/intermediates/incremental/release/packageReleaseResources/merged.dir
 com.example.handwrittenocrsumcam.app-packageReleaseResources-42 /workspace/app/build/intermediates/incremental/release/packageReleaseResources/stripped.dir
-com.example.handwrittenocrsumcam.app-merged-not-compiled-resources-43 /workspace/app/build/intermediates/merged-not-compiled-resources/release
-com.example.handwrittenocrsumcam.app-merged_res-44 /workspace/app/build/intermediates/merged_res/release
-com.example.handwrittenocrsumcam.app-main-45 /workspace/app/src/main/res
-com.example.handwrittenocrsumcam.app-release-46 /workspace/app/src/release/res
+com.example.handwrittenocrsumcam.app-merged_res-43 /workspace/app/build/intermediates/merged_res/release
+com.example.handwrittenocrsumcam.app-main-44 /workspace/app/src/main/res
+com.example.handwrittenocrsumcam.app-release-45 /workspace/app/src/release/res

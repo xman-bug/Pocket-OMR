@@ -21,15 +21,8 @@ android {
     }
 
     signingConfigs {
-        release {
-            storeFile file("keystore.jks")
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
-        }
         debug {
-            // Use debug keystore for debug builds
-            storeFile file("debug.keystore")
+            // Use default debug keystore (auto-generated)
         }
     }
 
@@ -47,11 +40,9 @@ android {
         
         release {
             debuggable false
-            minifyEnabled true
-            shrinkResources true
-            signingConfig signingConfigs.release
-            
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            minifyEnabled false
+            shrinkResources false
+            signingConfig signingConfigs.debug
             
             buildConfigField "boolean", "DEBUG_MODE", "false"
             resValue "string", "app_name", "OCR SumCam"

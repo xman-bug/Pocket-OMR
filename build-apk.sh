@@ -89,20 +89,8 @@ fi
 # Make gradlew executable
 chmod +x gradlew
 
-# Check for keystore (release builds)
-if [[ "$BUILD_TYPE" == "release" || "$BUILD_TYPE" == "both" ]]; then
-    if [ ! -f "app/keystore.jks" ]; then
-        print_warning "Release keystore not found at app/keystore.jks"
-        print_warning "You may need to set up signing configuration for release builds"
-        print_warning "Check configure-secrets.md for setup instructions"
-    fi
-    
-    if [ -z "$KEYSTORE_PASSWORD" ] || [ -z "$KEY_ALIAS" ] || [ -z "$KEY_PASSWORD" ]; then
-        print_warning "Release signing environment variables not set:"
-        print_warning "  KEYSTORE_PASSWORD, KEY_ALIAS, KEY_PASSWORD"
-        print_warning "Release build may fail without proper signing configuration"
-    fi
-fi
+# Note: Release builds now use debug signing for development purposes
+# For production releases, configure a proper release keystore
 
 # Clean build if requested
 if [ "$CLEAN_BUILD" = true ]; then
