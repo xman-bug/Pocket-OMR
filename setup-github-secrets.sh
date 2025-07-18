@@ -17,12 +17,14 @@ if command -v gh &> /dev/null; then
         
         echo
         echo "🔑 Setting up secrets..."
+        echo "⚠️  Note: You'll need to provide your own keystore values"
+        echo
         
-        # Read secrets from configure-secrets.md file
-        KEYSTORE_BASE64=$(sed -n '/### 1. KEYSTORE_BASE64/,/^### 2/p' configure-secrets.md | sed -n '/```$/,/```$/p' | sed '1d;$d' | tr -d '\n')
-        KEYSTORE_PASSWORD="testpass"
-        KEY_ALIAS="testkey"
-        KEY_PASSWORD="testpass"
+        # Prompt for secrets
+        read -p "Enter KEYSTORE_BASE64 (base64 encoded keystore): " KEYSTORE_BASE64
+        read -p "Enter KEYSTORE_PASSWORD: " KEYSTORE_PASSWORD
+        read -p "Enter KEY_ALIAS: " KEY_ALIAS
+        read -p "Enter KEY_PASSWORD: " KEY_PASSWORD
         
         # Set secrets
         echo "$KEYSTORE_BASE64" | gh secret set KEYSTORE_BASE64
@@ -43,15 +45,16 @@ if command -v gh &> /dev/null; then
 else
     echo "ℹ️  GitHub CLI not found. Please configure secrets manually:"
     echo
-    echo "📋 Go to: https://github.com/xman-bug/Pocket-OMR/settings/secrets/actions"
+    echo "📋 Go to your repository settings:"
+    echo "   https://github.com/USERNAME/REPO/settings/secrets/actions"
     echo
     echo "🔑 Add these four secrets:"
-    echo "   - KEYSTORE_BASE64"
-    echo "   - KEYSTORE_PASSWORD" 
-    echo "   - KEY_ALIAS"
-    echo "   - KEY_PASSWORD"
+    echo "   - KEYSTORE_BASE64 (base64 encoded keystore file)"
+    echo "   - KEYSTORE_PASSWORD (keystore password)" 
+    echo "   - KEY_ALIAS (signing key alias)"
+    echo "   - KEY_PASSWORD (signing key password)"
     echo
-    echo "📄 Values are in configure-secrets.md file"
+    echo "📄 See README.md for detailed setup instructions"
 fi
 
 echo
