@@ -65,8 +65,8 @@ jobs:
         if: github.event.inputs.version_bump != 'none'
         run: |
           # Read current version with more precise parsing
-          CURRENT_VERSION=$(awk '/^\s*versionName/ {gsub(/[""]/, "", $2); print $2; exit}' app/build.gradle)
-          CURRENT_CODE=$(awk '/^\s*versionCode/ {print $2; exit}' app/build.gradle)
+          CURRENT_VERSION=$(grep -E '^\s*versionName\s' app/build.gradle | sed 's/.*"\([^"]*\)".*/\1/')
+          CURRENT_CODE=$(grep -E '^\s*versionCode\s' app/build.gradle | sed 's/.*versionCode\s*\([0-9]*\).*/\1/')
           
           echo "Current version: $CURRENT_VERSION"
           echo "Current version code: $CURRENT_CODE"
@@ -180,8 +180,8 @@ jobs:
           fi
           
           # Get version info with improved parsing
-          VERSION_NAME=$(awk '/^\s*versionName/ {gsub(/[""]/, "", $2); print $2; exit}' app/build.gradle)
-          VERSION_CODE=$(awk '/^\s*versionCode/ {print $2; exit}' app/build.gradle)
+          VERSION_NAME=$(grep -E '^\s*versionName\s' app/build.gradle | sed 's/.*"\([^"]*\)".*/\1/')
+          VERSION_CODE=$(grep -E '^\s*versionCode\s' app/build.gradle | sed 's/.*versionCode\s*\([0-9]*\).*/\1/')
           
           TIMESTAMP=$(date +"%Y%m%d_%H%M%S")
           APK_NAME="HandwrittenOCRSumCam-${BUILD_TYPE}-v${VERSION_NAME}-${VERSION_CODE}-${TIMESTAMP}.apk"
@@ -212,7 +212,7 @@ jobs:
         id: apk_size
         run: |
           APK_SIZE=$(stat -c%s "${{ steps.build_info.outputs.apk_name }}")
-          APK_SIZE_MB=$(echo "scale=2; $APK_SIZE / 1024 / 1024" | bc -l)
+          APK_SIZE_MB=$(awk "BEGIN {printf \"%.2f\", $APK_SIZE / 1024 / 1024}")
           echo "APK size: $APK_SIZE bytes ($APK_SIZE_MB MB)"
           echo "apk_size_bytes=$APK_SIZE" >> $GITHUB_OUTPUT
           echo "apk_size_mb=$APK_SIZE_MB" >> $GITHUB_OUTPUT
