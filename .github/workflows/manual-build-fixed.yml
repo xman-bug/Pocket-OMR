@@ -33,23 +33,23 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        build_variant: 
-          - ${{ github.event.inputs.build_type == 'debug' && 'debug' || '' }}
-          - ${{ github.event.inputs.build_type == 'release' && 'release' || '' }}
-          - ${{ github.event.inputs.build_type == 'both' && 'debug' || '' }}
-          - ${{ github.event.inputs.build_type == 'both' && 'release' || '' }}
+        include:
+          - build_variant: debug
+            enabled: ${{ github.event.inputs.build_type == 'debug' || github.event.inputs.build_type == 'both' }}
+          - build_variant: release
+            enabled: ${{ github.event.inputs.build_type == 'release' || github.event.inputs.build_type == 'both' }}
         exclude:
-          - build_variant: ''
+          - enabled: false
     
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: 'temurin'
-          java-version: '17'
+          java-version: '21'
 
       - name: Cache Gradle dependencies
         uses: actions/cache@v4
